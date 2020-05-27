@@ -1,0 +1,14 @@
+.HeatmapItem {
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  border-color: black;
+  border-style: solid;
+}
+
+.HeatmapItem-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1;
+  text-align: center;
+}

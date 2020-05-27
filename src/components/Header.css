@@ -1,0 +1,75 @@
+.Header {
+  height: 240px;
+  width: 100%;
+  background-color: #1982C4;
+  position: relative;
+  border-bottom-width: 3px;
+  border-bottom-style: solid;
+  border-bottom-color: #1982C4;
+}
+
+.header-content {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.social-container {
+  right: 0;
+  display: flex;
+}
+
+.links {
+  height: 100%;
+  bottom: 0;
+  background-color: #fff;
+  overflow-x: scroll;
+}
+
+.links-container {
+  width: 90%;
+  height: 30%;
+  position: absolute;
+  bottom: 0;
+}
+.links-inner-container {
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+  display: flex;
+}
+
+.header-link {
+  margin: auto 0;
+  padding: 0 20px;
+
+  position: relative;
+
+  font-size: 22px !important;
+
+  color: #1982C4;
+  outline: none;
+  text-decoration: none;
+}
+
+/* Styles around the underlining present on links in the header */
+.header-link:before, .currentPage:before {
+  content: '';
+  position: absolute;
+
+  border-bottom: 3px solid #1982C4;
+
+  padding: 0 3px;
+  margin: -3px auto;
+
+  width: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  transition: 0.4s;
+}
+
+/* Transition to a wide border */
+.header-link:hover:before, .currentPage:before {
+  width: 80%;
+}
