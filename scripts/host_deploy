@@ -1,0 +1,10 @@
+cd ~
+rm -rf Heatmaps-Site
+git clone https://github.com/RyanMKrol/Heatmaps-Site.git
+cd Heatmaps-Site
+git pull
+npm install
+npm run build
+pm2 delete Heatmaps-Site
+pm2 start runSite.js --name Heatmaps-Site
+pm2 save
