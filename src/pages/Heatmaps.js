@@ -2,10 +2,11 @@ import React, { Component } from 'react'
 import fetch from 'node-fetch'
 
 import { HeatmapItem, LoadingIcon } from './../components'
+import baseEndpoint from './../utils'
 
 import './Heatmaps.css'
 
-const HEATMAPS_ENDPOINT = 'http://stockpricedataapi.xyz/api/heatmap/'
+const HEATMAPS_ENDPOINT = `${baseEndpoint()}/heatmap/`
 
 // A certain amount of the data is corrupt resulting in large % changes, so
 // i'm filtering these out
