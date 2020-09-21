@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import fetch from 'node-fetch'
 
-import { HeatmapItem, LoadingIcon } from './../components'
+import { HeatmapItem, LoadingIcon, Error } from './../components'
 import baseEndpoint from './../utils'
 
 import './Heatmaps.css'
@@ -32,6 +32,9 @@ class Heatmaps extends Component {
   generateHeatmapItems() {
     if (typeof this.state.heatmapData === 'undefined') {
       return <LoadingIcon />
+    }
+    if (this.state.heatmapData.error !== undefined) {
+      return <Error />
     }
 
     const heatmapDataSorted = this.state.heatmapData.sort(

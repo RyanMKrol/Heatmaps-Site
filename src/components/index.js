@@ -1,3 +1,4 @@
+export { default as Error } from './Error'
 export { default as HeatmapItem } from './HeatmapItem'
 export { default as Header } from './Header'
 export { default as Footer } from './Footer'
