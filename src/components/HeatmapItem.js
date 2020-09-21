@@ -14,7 +14,7 @@ const SATURATION_BUCKET_WIDTH = 5
 class HeatmapItem extends Component {
   // returns the change to 2 decimal places
   generateTruncatedChange(change) {
-    return Math.round(parseFloat(change)*100)/100
+    return Math.round(parseFloat(change) * 100) / 100
   }
 
   // returns the background colour string for a positive % change
@@ -33,37 +33,49 @@ class HeatmapItem extends Component {
 
     if (absoluteChange > FULL_SATURATION_THRESHOLD) {
       // anything over the limit will be fully green
-      return change > 0 ?
-        this._generatePositiveBackgroundString(FULL_SATURATION_PERCENT) :
-        this._generateNegativeBackgroundString(FULL_SATURATION_PERCENT)
+      return change > 0
+        ? this._generatePositiveBackgroundString(FULL_SATURATION_PERCENT)
+        : this._generateNegativeBackgroundString(FULL_SATURATION_PERCENT)
     } else {
       // anything under the limit will be scaled using hsl css
-      const bucketedSaturationPercent = (parseInt(absoluteChange / SATURATION_BUCKET_WIDTH)) * SATURATION_BUCKET_WIDTH
+      const bucketedSaturationPercent =
+        parseInt(absoluteChange / SATURATION_BUCKET_WIDTH) *
+        SATURATION_BUCKET_WIDTH
       const saturationPercent =
         FULL_SATURATION_PERCENT +
-        ((FULL_SATURATION_THRESHOLD - bucketedSaturationPercent)*(FULL_SATURATION_PERCENT/FULL_SATURATION_THRESHOLD))
+        (FULL_SATURATION_THRESHOLD - bucketedSaturationPercent) *
+          (FULL_SATURATION_PERCENT / FULL_SATURATION_THRESHOLD)
 
-      return change > 0 ?
-        this._generatePositiveBackgroundString(saturationPercent) :
-        this._generateNegativeBackgroundString(saturationPercent)
+      return change > 0
+        ? this._generatePositiveBackgroundString(saturationPercent)
+        : this._generateNegativeBackgroundString(saturationPercent)
     }
   }
 
   render() {
     const styles = {
-      backgroundColor: this.generateBackgroundColour(this.props.change),
+      backgroundColor: this.generateBackgroundColour(this.props.change)
     }
 
-    if (!(this.props.ticker && this.props.change)) {
-      throw new Error('Did not pass all required args for rendering HeatmapItem')
+    if (
+      !(
+        typeof this.props.ticker !== 'undefined' &&
+        typeof this.props.change !== 'undefined'
+      )
+    ) {
+      throw new Error(
+        'Did not pass all required args for rendering HeatmapItem'
+      )
     }
 
     return (
       <div style={styles} className="HeatmapItem">
         <p className="HeatmapItem-content">
           <span className="HeatmapItem-ticker">{this.props.ticker}</span>
-          <br/>
-          <span className="HeatmapItem-change">{this.generateTruncatedChange(this.props.change)}%</span>
+          <br />
+          <span className="HeatmapItem-change">
+            {this.generateTruncatedChange(this.props.change)}%
+          </span>
         </p>
       </div>
     )
