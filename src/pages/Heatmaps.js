@@ -70,9 +70,16 @@ class Heatmaps extends Component {
   shouldComponentUpdate(nextProps, nextState) {
     if (nextProps.timePeriod !== this.props.timePeriod) {
       const timePeriod = nextProps.timePeriod
-      this.updateHeatmapData(timePeriod)
+      this.setState(
+        {
+          heatmapData: undefined
+        },
+        () => {
+          this.updateHeatmapData(timePeriod)
 
-      return true
+          return true
+        }
+      )
     }
     if (JSON.stringify(nextState) !== JSON.stringify(this.state)) {
       return true
