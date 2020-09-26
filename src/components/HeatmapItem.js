@@ -71,7 +71,7 @@ class HeatmapItem extends Component {
     return (
       <div style={styles} className="HeatmapItem">
         <p className="HeatmapItem-content">
-          <span className="HeatmapItem-ticker">{this.props.ticker}</span>
+          {generateTickerElement(this.props.ticker)}
           <br />
           <span className="HeatmapItem-change">
             {this.generateTruncatedChange(this.props.change)}%
@@ -80,6 +80,19 @@ class HeatmapItem extends Component {
       </div>
     )
   }
+}
+
+function generateTickerElement(ticker) {
+  if (!ticker.includes('.L')) return null
+
+  const rawTickerName = ticker.split('.L')[0]
+  const searchUrl = `https://www.google.com/search?tbm=fin&q=LON:${rawTickerName}`
+
+  return (
+    <a href={searchUrl}>
+      <span className="HeatmapItem-ticker">{ticker}</span>
+    </a>
+  )
 }
 
 export default HeatmapItem
