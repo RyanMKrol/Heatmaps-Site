@@ -6,7 +6,7 @@ import baseEndpoint from './../utils'
 
 import './Heatmaps.css'
 
-const HEATMAPS_ENDPOINT = `${baseEndpoint()}/heatmap/`
+const HEATMAPS_ENDPOINT = `${baseEndpoint()}/heatmaps/FTSE_350`
 
 // A certain amount of the data is corrupt resulting in large % changes, so
 // i'm filtering these out

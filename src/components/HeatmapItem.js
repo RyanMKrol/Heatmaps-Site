@@ -83,10 +83,7 @@ class HeatmapItem extends Component {
 }
 
 function generateTickerElement(ticker) {
-  if (!ticker.includes('.L')) return null
-
-  const rawTickerName = ticker.split('.L')[0]
-  const searchUrl = `https://www.google.com/search?tbm=fin&q=LON:${rawTickerName}`
+  const searchUrl = `https://www.google.com/search?tbm=fin&q=LON:${ticker}`
 
   return (
     <a href={searchUrl}>

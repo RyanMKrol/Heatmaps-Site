@@ -1,19 +1,14 @@
-import React from "react"
+import React from 'react'
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Redirect,
-} from "react-router-dom"
+  Redirect
+} from 'react-router-dom'
 
-import {
-  Heatmaps,
-} from "./../pages"
+import { Heatmaps } from './../pages'
 
-import {
-  Header,
-  Footer,
-} from '.'
+import { Header, Footer } from '.'
 
 import './AppRouter.css'
 
@@ -24,26 +19,26 @@ export default function AppRouter() {
         <Header />
         <Switch>
           <Route exact path="/">
-          <Redirect
-            to={{
-              pathname: "/heatmap/two_year",
-            }}
-          />
+            <Redirect
+              to={{
+                pathname: '/heatmap/TWO_YEAR'
+              }}
+            />
           </Route>
-          <Route path="/heatmap/one_month">
-            <Heatmaps timePeriod='one_month' />
+          <Route path="/heatmap/ONE_MONTH">
+            <Heatmaps timePeriod="ONE_MONTH" />
           </Route>
-          <Route path="/heatmap/three_month">
-            <Heatmaps timePeriod='three_month' />
+          <Route path="/heatmap/THREE_MONTH">
+            <Heatmaps timePeriod="THREE_MONTH" />
           </Route>
-          <Route path="/heatmap/six_month">
-            <Heatmaps timePeriod='six_month' />
+          <Route path="/heatmap/SIX_MONTH">
+            <Heatmaps timePeriod="SIX_MONTH" />
           </Route>
-          <Route path="/heatmap/one_year">
-            <Heatmaps timePeriod='one_year' />
+          <Route path="/heatmap/ONE_YEAR">
+            <Heatmaps timePeriod="ONE_YEAR" />
           </Route>
-          <Route path="/heatmap/two_year">
-            <Heatmaps timePeriod='two_year' />
+          <Route path="/heatmap/TWO_YEAR">
+            <Heatmaps timePeriod="TWO_YEAR" />
           </Route>
         </Switch>
         <Footer />
