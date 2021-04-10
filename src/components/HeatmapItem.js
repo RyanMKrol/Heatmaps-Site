@@ -39,8 +39,7 @@ class HeatmapItem extends Component {
     } else {
       // anything under the limit will be scaled using hsl css
       const bucketedSaturationPercent =
-        parseInt(absoluteChange / SATURATION_BUCKET_WIDTH) *
-        SATURATION_BUCKET_WIDTH
+        parseInt(absoluteChange / SATURATION_BUCKET_WIDTH) * SATURATION_BUCKET_WIDTH
       const saturationPercent =
         FULL_SATURATION_PERCENT +
         (FULL_SATURATION_THRESHOLD - bucketedSaturationPercent) *
@@ -57,15 +56,8 @@ class HeatmapItem extends Component {
       backgroundColor: this.generateBackgroundColour(this.props.change)
     }
 
-    if (
-      !(
-        typeof this.props.ticker !== 'undefined' &&
-        typeof this.props.change !== 'undefined'
-      )
-    ) {
-      throw new Error(
-        'Did not pass all required args for rendering HeatmapItem'
-      )
+    if (!(typeof this.props.ticker !== 'undefined' && typeof this.props.change !== 'undefined')) {
+      throw new Error('Did not pass all required args for rendering HeatmapItem')
     }
 
     return (
@@ -83,7 +75,7 @@ class HeatmapItem extends Component {
 }
 
 function generateTickerElement(ticker) {
-  const searchUrl = `https://www.google.com/search?tbm=fin&q=LON:${ticker}`
+  const searchUrl = `https://www.google.com/finance/quote/${ticker}:LON?window=5Y`
 
   return (
     <a href={searchUrl}>
